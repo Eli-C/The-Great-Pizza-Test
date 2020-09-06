@@ -13,7 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "INGREDIENT")
@@ -24,7 +28,9 @@ public class Ingredient {
     private Integer id;
 	private String name;
     
-    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "ingredients", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    
+    @OnDelete(action = OnDeleteAction.CASCADE)
     
     private Set<Pizza> pizzas = new HashSet<>();
     
