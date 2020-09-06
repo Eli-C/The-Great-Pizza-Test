@@ -12,9 +12,8 @@ namespace Server.Domain
         public IList<Ingredient> Ingredients { get; set; }
         public double Price { get; set; }
 
-        public Pizza(long id, string name, IList<Ingredient> ingredients, double price)
+        public Pizza(string name, IList<Ingredient> ingredients, double price)
         {
-            this.Id = id;
             this.Name = name;
             this.Ingredients = ingredients;
             this.Price = price;

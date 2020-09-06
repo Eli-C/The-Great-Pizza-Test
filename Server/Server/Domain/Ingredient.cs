@@ -11,9 +11,8 @@ namespace Server.Domain
         public string Name { get; set; }
         public double Price { get; set; }
 
-        public Ingredient(long id, string name, double price)
+        public Ingredient(string name, double price)
         {
-            this.Id = id;
             this.Name = name;
             this.Price = price;
         }
