@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -19,16 +20,12 @@ import javax.persistence.Table;
 public class Ingredient {
 
 	@Id
-    @GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 	private String name;
     
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name = "PizzaIngredients",
-            joinColumns = {@JoinColumn(name = "ingredient_id")},
-            inverseJoinColumns = {@JoinColumn(name = "pizza_id")}
-    )
+    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.EAGER)
+    
     private Set<Pizza> pizzas = new HashSet<>();
     
     

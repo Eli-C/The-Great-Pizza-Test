@@ -7,19 +7,30 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PIZZA")
 public class Pizza {
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	
-	@ManyToMany(mappedBy = "pizzas", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
+	
+	@JoinTable(
+            name = "PizzaIngredients",
+            joinColumns = {@JoinColumn(name = "pizza_id")},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id")}
+    )
+	
 	private Set<Ingredient> ingredients = new HashSet<>();
 	
 	public Pizza() {

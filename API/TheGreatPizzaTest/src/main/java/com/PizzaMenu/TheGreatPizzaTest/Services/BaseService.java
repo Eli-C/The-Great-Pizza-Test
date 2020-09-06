@@ -13,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
 public class BaseService <T extends CrudRepository<K, Integer>,K>{
 
 	@Autowired
-    private T repository;
+    protected T repository;
 
     public Iterable<K> getAll() {
         return repository.findAll();
@@ -23,15 +23,15 @@ public class BaseService <T extends CrudRepository<K, Integer>,K>{
         return (K) repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
     }
 
-    public void add(K entity) {
-    	repository.save(entity);
+    public K add(K entity) {
+    	return repository.save(entity);
     }
 
-    public void update(Integer id, K entity) {
-    	repository.save(entity);
+    public K update(Integer id, K entity) {
+    	return repository.save(entity);
     }
 
-    public void deleteBook(Integer id) {
+    public void delete(Integer id) {
     	repository.deleteById(id);
     }
 }
