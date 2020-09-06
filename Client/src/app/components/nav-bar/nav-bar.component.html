@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+    <span class="fill-remaining-space">
+      <button #r="matMenuTrigger" mat-icon-button [matMenuTriggerFor]="menu" >
+        <mat-icon (mouseover)="open(r)"  >menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>add_circle</mat-icon>
+          <span>Create Pizza</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>add_circle</mat-icon>
+            <span>Create Ingredient</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit Pizza</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit Ingredient</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>library_add</mat-icon>
+          <span>Add Ingredient(s) To Pizza</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>delete_forever</mat-icon>
+          <span>Delete Pizza</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>delete_forever</mat-icon>
+            <span>Delete Ingredient</span>
+        </button>
+      </mat-menu>
+    </span>
+    <span class="fill-remaining-space">Pizza Menu</span>
+</mat-toolbar>
