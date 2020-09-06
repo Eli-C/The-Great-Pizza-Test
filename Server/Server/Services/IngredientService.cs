@@ -1,5 +1,7 @@
-﻿using Server.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using Server.Domain;
 using Server.Interfaces;
+using Server.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +11,51 @@ namespace Server.Services
 {
     public class IngredientService : ICrudService<Ingredient>
     {
-        public void Create(Ingredient entity)
+        private readonly PizzaStoreContext _context;
+
+        public IngredientService(PizzaStoreContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public void Delete(long id)
+        public Task Create(Ingredient entity)
         {
-            throw new NotImplementedException();
+            _context.Ingredients.Add(entity);
+            return _context.SaveChangesAsync();
         }
 
-        public List<Ingredient> GetAll()
+        public async Task<Ingredient> Delete(long id)
         {
-            throw new NotImplementedException();
+            var ingredient = await _context.Ingredients.FindAsync(id);
+
+            if (ingredient != null)
+            {
+                _context.Ingredients.Remove(ingredient);
+                await _context.SaveChangesAsync();
+            }
+
+            return ingredient;
         }
 
-        public Ingredient GetById(long id)
+        public IEnumerable<Ingredient> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Ingredients;
         }
 
-        public void Update(long id, Ingredient newEntity)
+        public Task<Ingredient> GetById(long id)
         {
-            throw new NotImplementedException();
+            return _context.Ingredients.FindAsync(id);
+        }
+
+        public Task Update(long id, Ingredient newEntity)
+        {
+            _context.Entry(newEntity).State = EntityState.Modified;
+            return _context.SaveChangesAsync();
+        }
+
+        public bool IngredientExists(long id)
+        {
+            return _context.Ingredients.Any(e => e.Id == id);
         }
     }
 }

@@ -7,14 +7,14 @@ namespace Server.Interfaces
 {
     public interface ICrudService<T>
     {
-        List<T> GetAll();
+        IEnumerable<T> GetAll();
 
-        T GetById(long id);
+        Task<T> GetById(long id);
 
-        void Create(T entity);
+        Task Create(T entity);
 
-        void Update(long id, T newEntity);
+        Task Update(long id, T newEntity);
 
-        void Delete(long id);
+        Task<T> Delete(long id);
     }
 }

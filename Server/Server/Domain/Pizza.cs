@@ -18,5 +18,8 @@ namespace Server.Domain
             this.Ingredients = ingredients;
             this.Price = price;
         }
+
+        public Pizza()
+        { }
     }
 }

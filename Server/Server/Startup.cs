@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Server.Repositories;
+using Server.Services;
 
 namespace Server
 {
@@ -23,11 +24,15 @@ namespace Server
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<PizzaRepository>(opt =>
-               opt.UseInMemoryDatabase("Pizzas"));
+            services.AddDbContext<PizzaStoreContext>(opt =>
+               opt.UseInMemoryDatabase("PizzaStore"));
 
-            services.AddDbContext<IngredientRepository>(opt =>
-               opt.UseInMemoryDatabase("Ingredients"));
+            /*services.AddDbContext<IngredientRepository>(opt =>
+               opt.UseInMemoryDatabase("Ingredients"));*/
+
+            services.AddTransient<PizzaService>();
+
+            services.AddTransient<IngredientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,7 @@
-﻿using Server.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using Server.Domain;
 using Server.Interfaces;
+using Server.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +11,49 @@ namespace Server.Services
 {
     public class PizzaService : ICrudService<Pizza>
     {
-        public void Create(Pizza entity)
+        private readonly PizzaStoreContext _context;
+
+        public PizzaService(PizzaStoreContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public Task Create(Pizza entity)
+        {
+            _context.Pizzas.Add(entity);
+            return _context.SaveChangesAsync();
         }
 
-        public void Delete(long id)
+        public async Task<Pizza> Delete(long id)
         {
-            throw new NotImplementedException();
+            var pizza = await _context.Pizzas.FindAsync(id);
+            if (pizza != null)
+            {
+                _context.Pizzas.Remove(pizza);
+                await _context.SaveChangesAsync();
+            }
+
+            return pizza;
         }
 
-        public List<Pizza> GetAll()
+        public IEnumerable<Pizza> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Pizzas.Include(p => p.Ingredients);
         }
 
-        public Pizza GetById(long id)
+        public Task<Pizza> GetById(long id)
         {
-            throw new NotImplementedException();
+            return _context.Pizzas.Include(p => p.Ingredients).FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public void Update(long id, Pizza newEntity)
+        public Task Update(long id, Pizza newEntity)
         {
-            throw new NotImplementedException();
+            _context.Entry(newEntity).State = EntityState.Modified;
+            return _context.SaveChangesAsync();
+        }
+
+        public bool PizzaExists(long id)
+        {
+            return _context.Pizzas.Any(e => e.Id == id);
         }
     }
 }

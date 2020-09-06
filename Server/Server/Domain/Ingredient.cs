@@ -16,5 +16,8 @@ namespace Server.Domain
             this.Name = name;
             this.Price = price;
         }
+
+        public Ingredient()
+        { }
     }
 }
