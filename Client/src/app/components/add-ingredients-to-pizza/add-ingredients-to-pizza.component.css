@@ -1,0 +1,12 @@
+.centered-ingredients {
+    margin: 10px auto;
+    text-align: center;
+}
+
+mat-form-field {
+    width: 50%;
+}
+
+h2 {
+    margin-left: 50px;
+}

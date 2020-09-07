@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PizzaService } from 'src/app/services/pizza.service';
+import { Pizza } from 'src/app/models/pizza';
 
 @Component({
   selector: 'app-view-pizzas-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewPizzasListComponent implements OnInit {
 
-  constructor() { }
+  public pizzas : Pizza[];
 
-  ngOnInit(): void {
+  constructor(private pizzaService : PizzaService) { 
+    
   }
 
+  ngOnInit(): void {
+    this.pizzaService.getAllPizzas().subscribe(res => {
+      this.pizzas = res;
+    });
+  }
 }

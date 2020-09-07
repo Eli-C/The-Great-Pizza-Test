@@ -1,1 +1,21 @@
-<p>view-elements works!</p>
+<div class="preview-elements-container">
+    <mat-card class="card-container" *ngFor="let element of elementsToDisplay">
+        <mat-card-header>
+            <div class="centered-actions">
+                <mat-card-title >{{entityName}} {{element.name}}</mat-card-title>
+            </div>
+        </mat-card-header>
+        <img mat-card-image [src]="imageURL">
+        <mat-card-content>
+          <p>
+            {{description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="centered-actions">
+                <button mat-button color="primary">Edit</button>
+                <button mat-button color="primary">Delete</button>
+            </div>
+        </mat-card-actions>
+      </mat-card>
+</div>

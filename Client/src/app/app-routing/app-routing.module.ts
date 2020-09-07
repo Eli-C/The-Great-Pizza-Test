@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { ViewIngredientsListComponent } from './components/view-ingredients-list/view-ingredients-list.component';
-import { ViewPizzasListComponent } from './components/view-pizzas-list/view-pizzas-list.component';
-import { CreateIngredientComponent } from './components/create-ingredient/create-ingredient.component';
-import { CreatePizzaComponent } from './components/create-pizza/create-pizza.component';
+import { HomeComponent } from '../components/home/home.component';
+import { CreatePizzaComponent } from '../components/create-pizza/create-pizza.component';
+import { CreateIngredientComponent } from '../components/create-ingredient/create-ingredient.component';
+import { ViewPizzasListComponent } from '../components/view-pizzas-list/view-pizzas-list.component';
+import { ViewIngredientsListComponent } from '../components/view-ingredients-list/view-ingredients-list.component';
 
 
 const routes: Routes = [
@@ -27,11 +27,11 @@ const routes: Routes = [
     },
     {
       path: 'editPizzas',
-      component: AboutComponent
+      component: HomeComponent
     },
     {
       path: 'editIngredient',
-      component: TaskListComponent
+      component: HomeComponent
     },
     {
       path: 'viewPizzas',
@@ -43,20 +43,20 @@ const routes: Routes = [
     },
     {
         path : 'addIngredientsToPizza',
-        component: TaskComponent
+        component: HomeComponent
     },
     {
         path : 'deletePizza',
-        component: TaskComponent
+        component: HomeComponent
     },
     {
         path : 'deleteIngredient',
-        component: TaskComponent
+        component: HomeComponent
     }
   ];
   
   @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
   })
   export class AppRoutingModule { }
