@@ -1,0 +1,12 @@
+<app-view-elements
+    entityName="Pizza" 
+    [descriptionPerElement]="getDescriptionForPizza"
+    imageURL="https://www.kindpng.com/picc/m/3-35083_pepperoni-pizza-slice-png-pepperoni-pizza-transparent-background.png"
+    [elementsToDisplay]="pizzas"
+    canDelete=true
+    canEdit=true
+    (onEdit)="pizzaEditClicked($event)"
+    (onDelete)="pizzaDeleteClicked($event)"
+    >
+</app-view-elements> 
+    

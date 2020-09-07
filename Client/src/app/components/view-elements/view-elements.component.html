@@ -1,0 +1,21 @@
+<div class="preview-elements-container">
+    <mat-card class="card-container" *ngFor="let element of elementsToDisplay">
+        <mat-card-header>
+            <div class="centered-actions">
+                <mat-card-title >{{entityName}} {{element.name}}</mat-card-title>
+            </div>
+        </mat-card-header>
+        <img mat-card-image [src]="imageURL">
+        <mat-card-content>
+          <p>
+            {{descriptionPerElement(element)}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="centered-actions">
+                <button *ngIf="canEdit" mat-button color="primary" (click)=onEditClicked(element)>Edit</button>
+                <button *ngIf="canDelete" mat-button color="primary" (click)=OnDeleteClicked(element)>Delete</button>
+            </div>
+        </mat-card-actions>
+      </mat-card>
+</div>

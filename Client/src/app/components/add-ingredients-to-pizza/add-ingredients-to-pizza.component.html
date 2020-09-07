@@ -1,0 +1,16 @@
+<h2>Add Ingredients to {{pizzaName}} Pizza</h2>
+<div class="centered-ingredients">
+    <mat-form-field>
+        <mat-label>Ingredients</mat-label>
+        <mat-select [formControl]="ingredientsControl" multiple>
+          <mat-option ng-selected *ngFor="let ingredient of ingredientList" [value]="ingredient">{{ingredient.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <mat-chip-list>
+          <mat-chip *ngFor="let ingredient of ingredientsControl.value"
+            [removable]="true" color="primary" selected (removed)="oningredientRemoved(ingredient)">
+            {{ ingredient.name }}
+            <mat-icon matChipRemove>clear</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+</div>
