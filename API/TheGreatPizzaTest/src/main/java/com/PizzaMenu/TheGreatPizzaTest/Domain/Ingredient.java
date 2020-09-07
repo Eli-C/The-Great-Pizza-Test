@@ -4,20 +4,18 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "INGREDIENT")
@@ -28,7 +26,8 @@ public class Ingredient {
     private Integer id;
 	private String name;
     
-    @OneToMany(mappedBy = "ingredients", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JsonIgnore
+    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.EAGER)
     
     @OnDelete(action = OnDeleteAction.CASCADE)
     
