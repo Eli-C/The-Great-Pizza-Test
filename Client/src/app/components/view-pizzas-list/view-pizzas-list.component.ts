@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzaService } from 'src/app/services/pizza.service';
 import { Pizza } from 'src/app/models/pizza';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-pizzas-list',
@@ -11,7 +12,7 @@ export class ViewPizzasListComponent implements OnInit {
 
   public pizzas : Pizza[];
 
-  constructor(private pizzaService : PizzaService) { 
+  constructor(private pizzaService : PizzaService, private router: Router) { 
     
   }
 
@@ -24,5 +25,9 @@ export class ViewPizzasListComponent implements OnInit {
   getDescriptionForPizza = (pizza: Pizza): string => {
     const defaultMsg = `The pizza ${pizza.name} contains the following ingredients: `;
     return defaultMsg + pizza.ingredients.map(ingredient => ingredient.name).join(", ");
+  }
+
+  pizzaEditClicked(pizzaToEdit: Pizza) {
+    this.router.navigate([`/editPizzas/${pizzaToEdit.id}`])
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-view-elements',
@@ -11,10 +11,15 @@ export class ViewElementsComponent implements OnInit {
   @Input() descriptionPerElement: (element) => {};
   @Input() elementsToDisplay: any[];
   @Input() imageURL: string;
+  @Output() onEdit = new EventEmitter();
   
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onEditClicked(entityClicked) {
+    this.onEdit.emit(entityClicked);
   }
 
 }

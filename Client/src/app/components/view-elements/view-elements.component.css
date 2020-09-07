@@ -1,5 +1,7 @@
 .preview-elements-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
 }
 
 .card-container {

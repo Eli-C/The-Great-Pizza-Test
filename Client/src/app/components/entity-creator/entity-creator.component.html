@@ -1,6 +1,7 @@
 <mat-horizontal-stepper #stepper>
-    <mat-step>
-        <ng-template matStepLabel>Fill The {{entityName}} Name</ng-template>
+  <mat-step>
+    <ng-template matStepLabel>Fill The {{entityName}} Name</ng-template>
+      <div class="centered-step">
         <mat-form-field>
           <mat-label>Name</mat-label>
           <input matInput [formControl]="nameControl">
@@ -8,26 +9,31 @@
         <div>
           <button mat-button color="primary" matStepperNext>Next</button>
         </div>
-    </mat-step>
-    <mat-step *ngIf="isPizza">
-        <ng-template matStepLabel>Fill the ingredients to your pizza</ng-template>
+      </div>
+  </mat-step>
+   
+  <mat-step *ngIf="isPizza">
+    <ng-template matStepLabel>Fill the ingredients to your pizza</ng-template>
+      <div class="centered-step">
         <app-add-ingredients-to-pizza
-            [pizzaName]="nameControl.value" 
-            [ingredientList]="ingredients" 
-            [ingredientsControl]='ingredientsControl'>
+          [pizzaName]="nameControl.value"
+          [ingredientsControl]="ingredientsControl">
         </app-add-ingredients-to-pizza>
         <div>
           <button mat-button color="primary" matStepperPrevious>Back</button>
           <button mat-button color="primary" matStepperNext>Next</button>
         </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      </div>
+  </mat-step>
+  <mat-step>
+    <div class="centered-step">
+    <ng-template matStepLabel>Done</ng-template>
       <p>Your {{entityName}} can be saved</p>
       <div>
         <button mat-button color="primary" matStepperPrevious>Back</button>
         <button mat-button color="primary" (click)="saveEntity()">Save</button>
         <button mat-button color="primary" (click)="stepper.reset()">Create New One</button>
       </div>
-    </mat-step>
+    </div>
+  </mat-step>
   </mat-horizontal-stepper>

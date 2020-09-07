@@ -5,6 +5,7 @@ import { CreatePizzaComponent } from '../components/create-pizza/create-pizza.co
 import { CreateIngredientComponent } from '../components/create-ingredient/create-ingredient.component';
 import { ViewPizzasListComponent } from '../components/view-pizzas-list/view-pizzas-list.component';
 import { ViewIngredientsListComponent } from '../components/view-ingredients-list/view-ingredients-list.component';
+import { EditPizzaComponent } from '../components/edit-pizza/edit-pizza.component';
 
 
 const routes: Routes = [
@@ -22,8 +23,8 @@ const routes: Routes = [
       component: CreateIngredientComponent
     },
     {
-      path: 'editPizzas',
-      component: HomeComponent
+      path: 'editPizzas/:id',
+      component: EditPizzaComponent
     },
     {
       path: 'editIngredient',

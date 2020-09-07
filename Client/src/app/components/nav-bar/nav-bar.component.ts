@@ -16,7 +16,6 @@ export class NavBarComponent implements OnInit {
   }
 
   redirect(pagename: string) {
-    debugger;
     this.router.navigate([pagename]);
   }
 

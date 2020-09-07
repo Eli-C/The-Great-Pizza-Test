@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddIngredientsToPizzaComponent } from './components/add-ingredients-to-pizza/add-ingredients-to-pizza.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntityCreatorComponent } from './components/entity-creator/entity-creator.component';
+import { EditPizzaComponent } from './components/edit-pizza/edit-pizza.component';
 
 
 
@@ -41,7 +42,8 @@ import { EntityCreatorComponent } from './components/entity-creator/entity-creat
     CreatePizzaComponent,
     ViewElementsComponent,
     AddIngredientsToPizzaComponent,
-    EntityCreatorComponent
+    EntityCreatorComponent,
+    EditPizzaComponent
   ],
   imports: [
     BrowserModule,

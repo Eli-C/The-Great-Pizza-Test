@@ -1,0 +1,28 @@
+
+
+<mat-horizontal-stepper #stepper>
+    <mat-step>
+      <ng-template matStepLabel>Edit the ingredients of your pizza</ng-template>
+        <div class="centered-step">
+            <app-add-ingredients-to-pizza *ngIf="pizza"
+                [pizzaName]="pizza.name" 
+                [ingredientsControl]="ingredientsControl">
+            </app-add-ingredients-to-pizza>
+          <div>
+            <button mat-button color="primary" matStepperPrevious>Back</button>
+            <button mat-button color="primary" matStepperNext>Next</button>
+          </div>
+        </div>
+    </mat-step>
+    <mat-step>
+      <div class="centered-step">
+      <ng-template matStepLabel>Done</ng-template>
+        <p>Your Pizza can be Edited</p>
+        <div>
+          <button mat-button color="primary" matStepperPrevious>Back</button>
+          <button mat-button color="primary" (click)="updateEntity()">Apply Changes</button>
+          <button mat-button color="primary" (click)="stepper.reset()">Keep Editing</button>
+        </div>
+      </div>
+    </mat-step>
+    </mat-horizontal-stepper>
