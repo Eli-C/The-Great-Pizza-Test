@@ -2,6 +2,9 @@
     entityName="Ingredient" 
     [descriptionPerElement]="getDescriptionForIngredient"
     imageURL="https://mcvt-comet-37.fra1.cdn.digitaloceanspaces.com//previews/26222/thumb_26222.jpg"
-    [elementsToDisplay]="ingredients">
+    [elementsToDisplay]="ingredients"
+    canDelete=true
+    (onDelete)="ingredientDeletedClicked($event)"
+    >
 </app-view-elements> 
     

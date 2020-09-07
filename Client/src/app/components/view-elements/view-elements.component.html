@@ -13,8 +13,8 @@
         </mat-card-content>
         <mat-card-actions>
             <div class="centered-actions">
-                <button mat-button color="primary" (click)=onEditClicked(element)>Edit</button>
-                <button mat-button color="primary">Delete</button>
+                <button *ngIf="canEdit" mat-button color="primary" (click)=onEditClicked(element)>Edit</button>
+                <button *ngIf="canDelete" mat-button color="primary" (click)=OnDeleteClicked(element)>Delete</button>
             </div>
         </mat-card-actions>
       </mat-card>

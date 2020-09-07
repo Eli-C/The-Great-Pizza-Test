@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PizzaService } from 'src/app/services/pizza.service';
 import { Pizza } from 'src/app/models/pizza';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-pizzas-list',
@@ -12,11 +13,15 @@ export class ViewPizzasListComponent implements OnInit {
 
   public pizzas : Pizza[];
 
-  constructor(private pizzaService : PizzaService, private router: Router) { 
+  constructor(private pizzaService : PizzaService, private router: Router, private snackBar: MatSnackBar) { 
     
   }
 
   ngOnInit(): void {
+    this.retrievePizzas();
+  }
+
+  retrievePizzas() {
     this.pizzaService.getAllPizzas().subscribe(res => {
       this.pizzas = res;
     });
@@ -30,4 +35,14 @@ export class ViewPizzasListComponent implements OnInit {
   pizzaEditClicked(pizzaToEdit: Pizza) {
     this.router.navigate([`/editPizzas/${pizzaToEdit.id}`])
   }
+
+  pizzaDeleteClicked(pizzaToEdit: Pizza) {
+    this.pizzaService.deletePizza(pizzaToEdit.id).subscribe(res => {
+      this.retrievePizzas();
+      this.snackBar.open("Pizza was Deleted", "Accept", {
+        duration: 3000,
+      });
+    });
+  }
+
 }

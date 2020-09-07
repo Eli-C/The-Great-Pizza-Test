@@ -27,28 +27,12 @@ const routes: Routes = [
       component: EditPizzaComponent
     },
     {
-      path: 'editIngredient',
-      component: HomeComponent
-    },
-    {
       path: 'viewPizzas',
       component: ViewPizzasListComponent
     },
     {
       path : 'viewIngredients',
       component: ViewIngredientsListComponent
-    },
-    {
-        path : 'addIngredientsToPizza',
-        component: HomeComponent
-    },
-    {
-        path : 'deletePizza',
-        component: HomeComponent
-    },
-    {
-        path : 'deleteIngredient',
-        component: HomeComponent
     },
     {
       path: '**',
