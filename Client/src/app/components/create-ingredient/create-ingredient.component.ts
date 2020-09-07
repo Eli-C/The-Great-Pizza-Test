@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredient } from 'src/app/models/ingredient';
 import { IngredientService } from 'src/app/services/ingredient.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-ingredient',
@@ -11,7 +12,7 @@ export class CreateIngredientComponent implements OnInit {
 
   public ingredient : Ingredient;
 
-  constructor(private ingredientService : IngredientService) { 
+  constructor(private ingredientService : IngredientService, private snackBar: MatSnackBar) { 
   }
 
   ngOnInit(): void {
@@ -22,7 +23,9 @@ export class CreateIngredientComponent implements OnInit {
     this.ingredient.name = event.name;
     
     this.ingredientService.createIngredient(this.ingredient).subscribe(res => {
-      console.log("New ingredient added. ", res)
+      this.snackBar.open("New ingredient added", "Accept", {
+        duration: 3000,
+      });
     });
   }
 

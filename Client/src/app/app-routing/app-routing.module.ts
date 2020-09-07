@@ -8,11 +8,7 @@ import { ViewIngredientsListComponent } from '../components/view-ingredients-lis
 
 
 const routes: Routes = [
-    {
-      path: '',
-      redirectTo: 'home',
-      pathMatch: 'full'
-    },
+    
     {
       path: 'home',
       component: HomeComponent
@@ -52,6 +48,10 @@ const routes: Routes = [
     {
         path : 'deleteIngredient',
         component: HomeComponent
+    },
+    {
+      path: '**',
+      redirectTo: 'home',
     }
   ];
   

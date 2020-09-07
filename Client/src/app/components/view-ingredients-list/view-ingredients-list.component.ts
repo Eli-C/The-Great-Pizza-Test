@@ -21,4 +21,9 @@ export class ViewIngredientsListComponent implements OnInit {
     });
   }
 
+  getDescriptionForIngredient = (ingredient: Ingredient): string => {
+    const defaultMsg = `The ingredient ${ingredient.name} will make your pizza better`;
+    return defaultMsg;
+  }
+
 }

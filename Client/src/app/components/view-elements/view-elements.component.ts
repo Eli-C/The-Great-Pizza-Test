@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ViewElementsComponent implements OnInit {
 
   @Input() entityName: string;
-  @Input() description: string;
+  @Input() descriptionPerElement: (element) => {};
   @Input() elementsToDisplay: any[];
   @Input() imageURL: string;
   

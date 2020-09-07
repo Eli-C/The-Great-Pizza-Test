@@ -20,4 +20,9 @@ export class ViewPizzasListComponent implements OnInit {
       this.pizzas = res;
     });
   }
+
+  getDescriptionForPizza = (pizza: Pizza): string => {
+    const defaultMsg = `The pizza ${pizza.name} contains the following ingredients: `;
+    return defaultMsg + pizza.ingredients.map(ingredient => ingredient.name).join(", ");
+  }
 }

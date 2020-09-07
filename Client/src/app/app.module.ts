@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatInputModule} from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,7 +60,8 @@ import { EntityCreatorComponent } from './components/entity-creator/entity-creat
     FormsModule,
     MatChipsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule, 
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
